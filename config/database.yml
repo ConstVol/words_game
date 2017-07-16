@@ -1,0 +1,15 @@
+development:
+  adapter: postgresql
+  encoding: UTF8
+  database: sinatra
+  pool: 8
+  username: sinatra
+  password: 1Llovemymom
+
+production:
+  adapter: postgresql
+  encoding: UTF8
+  database: sinatra
+  pool: 8
+  username: sinatra
+  password: 1Llovemymom
