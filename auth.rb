@@ -10,7 +10,6 @@ class Auth
       bearer = JSON.parse(env['HTTP_AUTHORIZATION'])['token']
       payload, header = JWT.decode bearer, JWT_SECRET, true, options
       env['user_name'] = [payload['user']['user_name']]
-      p env['user_name']
       @appl.call(env)
     rescue JWT::DecodeError
       [401, { 'Content-Type' => 'text/plain' }, ['A token must be passed.']]

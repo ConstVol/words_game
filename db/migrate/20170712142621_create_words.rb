@@ -4,7 +4,7 @@ class CreateWords < ActiveRecord::Migration[5.1]
       t.belongs_to :phrase, index: true
       t.string :user_name
       t.string :text
-      t.string :time
+      t.timestamps
     end
   end
 end

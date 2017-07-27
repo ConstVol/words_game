@@ -23,14 +23,15 @@ ActiveRecord::Schema.define(version: 20170712142621) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.string "password"
+    t.string "password_hash"
   end
 
   create_table "words", force: :cascade do |t|
     t.bigint "phrase_id"
     t.string "user_name"
     t.string "text"
-    t.string "time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["phrase_id"], name: "index_words_on_phrase_id"
   end
 
