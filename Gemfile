@@ -1,0 +1,16 @@
+# frozen_string_literal: true
+source "https://rubygems.org"
+gem 'sinatra', '2.0.0'
+gem 'rest-client', '1.8.0'
+gem 'dotenv', '2.2.1'
+gem 'json', '2.1.0'
+gem 'jwt', '1.5.6'
+gem 'pusher', '1.3.1'
+gem 'puma', '3.9.1'
+gem 'pg', '0.18.4'
+gem 'rake', '12.0.0'
+gem 'oauth2', '1.4.0'
+gem 'activerecord', '5.1.2'
+gem 'sinatra-activerecord', '2.0.13'
+gem 'rubocop', '0.49.1'
+gem 'bcrypt', '3.1.11'
