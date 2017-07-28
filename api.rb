@@ -8,9 +8,7 @@ class Api < Sinatra::Base
     unless data['phrase']['first'].nil?
       @word = Word.create(text: data['phrase']['first'], user_name: data['user'],
                           phrase_id: @phrase.id)
-      Pusher.trigger('messages', 'my_event', {
-          text: "LOOOOL"
-      })
+      Pusher.trigger('messages', 'my_event', { text: "LOOOOL" })
       @phases = Phrase.all.to_json
     end
   end
@@ -30,11 +28,11 @@ class Api < Sinatra::Base
     @phrase.last_user = data['user']
     @word = Word.create(
               text: data['word']['text'],
-              phrase_id: params['id'], user_name: data['user'])
+              phrase_id: params['id'],
+              user_name: data['user']
+    )
     @phrase.save!
-    Pusher.trigger('messages', 'my_event', {
-        text: "LOOOOL"
-    })
+    Pusher.trigger('messages', 'my_event', { text: "LOOOOL" })
     Phrase.all.to_json
   end
 end

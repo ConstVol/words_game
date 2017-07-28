@@ -1,4 +1,4 @@
-/*jshint esversion: 6 */
+/*jshint esversion: 6 */num, count
 var gameApp = angular.module('routerApp.mainController',['ngAnimate', 'ui.bootstrap','pusher-angular']);
 
 gameApp.controller('mainController', ['$scope','$pusher', '$http','$rootScope', '$window', '$filter', '$state',
@@ -11,7 +11,7 @@ gameApp.controller('mainController', ['$scope','$pusher', '$http','$rootScope', 
         $rootScope.client = new Pusher('1404da432444b8f9e7aa', {
                 cluster: 'eu',
                 encrypted: true
-            });
+        });
         $rootScope.pusher = $pusher($rootScope.client);
 
         var channel = $rootScope.pusher.subscribe('messages');
@@ -27,7 +27,7 @@ gameApp.controller('mainController', ['$scope','$pusher', '$http','$rootScope', 
                         $scope.phrases = data;
                     });
             });
-        }
+    }
 
        $http.get('/phrases')
             .success(function(data) {
@@ -45,7 +45,7 @@ gameApp.controller('mainController', ['$scope','$pusher', '$http','$rootScope', 
         $scope.getHistory = function (id) {
             $rootScope.hitories = [];
             var text = '';
-            var phrase = $filter('filter')($scope.phrases, { id: id })[0];
+            var phrase = $filter('filter')($scope.phrases, {id: id})[0];
             phrase.words.forEach(function (word) {
                 var time = '(' + word.created_at.slice(0, -5) + ')';
                 var line = {'user_name': word.user_name, 'time': time, 'text': text, 'last_word': word.text};
@@ -74,10 +74,7 @@ gameApp.config(['$httpProvider', function ($httpProvider) {
 }]);
 
 gameApp.component('myContent', {
-    template: '<button class="btn btn-warning" type="button" ' +
-    'class="btn btn-default" ng-click="$ctrl.open()">' +
-    'Add Phrase' +
-    '</button>',
+    template: '<button class="btn btn-warning" type="button" class="btn btn-default" ng-click="$ctrl.open()">Add Phrase</button>',
     controller: function($uibModal) {
         $ctrl = this;
         $ctrl.dataForModal = {
@@ -98,7 +95,6 @@ gameApp.component('myContent', {
 });
 
 gameApp.component('myModal', {
-
     template: `
         <div class="modal-body">
             <div>{{$ctrl.greeting}}</div>   

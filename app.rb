@@ -15,11 +15,6 @@ require 'dotenv'
 
 Dotenv.load
 
-Pusher.app_id = ENV['PUSHER_APP_ID']
-Pusher.key = ENV['PUSHER_KEY']
-Pusher.secret = ENV['PUSHER_SECRET']
-Pusher.host = ENV['PUSHER_HOST']
-
 class PublicRoutes < Sinatra::Base
 
   get '/' do
@@ -66,7 +61,7 @@ class PublicRoutes < Sinatra::Base
                     :accept => :json})
     login = JSON.parse(auth_result)['login']
     @user = User.create(name: login, password: ' ')
-    redirect '/#/login'
+    redirect '/login'
   end
 
   def token user_name
@@ -79,7 +74,7 @@ class PublicRoutes < Sinatra::Base
         iat: Time.now.to_i,
         iss: JWT_ISSUER,
         user: {
-            user_name: user_name
+          user_name: user_name
         }
     }
   end
